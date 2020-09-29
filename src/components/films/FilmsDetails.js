@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Moment from 'moment';
 import FilmsCover from '../../PHOTO.json';
 
 function FilmsDetails({ film }) {
@@ -15,19 +16,19 @@ function FilmsDetails({ film }) {
 					<h4>{film.title}</h4>
 					<ul>
 						<li>
-							<strong>Episode: {film.episode_id} </strong>
+							<strong>Episode: {Moment(film.episode_id).format('DD-MM-YYYY')} </strong>
 						</li>
 						<li>
 							<strong>Director: {film.director}</strong>
 						</li>
 						<li>
-							<strong>Release: {film.release_date}</strong>
+							<strong>Release: {Moment(film.release_date).format('DD-MM-YYYY')}</strong>
 						</li>
 						<li>
-							<strong>Created: {film.created}</strong>
+							<strong>Created: {Moment(film.created).format('DD-MM-YYYY')}</strong>
 						</li>
 						<li>
-							<strong> Edited: {film.edited}</strong>
+							<strong> Edited: {Moment(film.edited).format('DD-MM-YYYY')}</strong>
 						</li>
 						<li>
 							<strong> Producer: {film.producer}</strong>
