@@ -61,9 +61,9 @@ function FilmInfo() {
 						<li>
 							<strong> Producer: {films.producer}</strong>
 						</li>
-						<li>
+						{/* <li>
 							<strong> URL: {films.url}</strong>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 				<div>
