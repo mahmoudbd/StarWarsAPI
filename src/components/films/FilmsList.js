@@ -7,7 +7,7 @@ function FilmsList({ isLoading, films, hasError }) {
 		<Spinner />
 	) : (
 		<section className="cards">
-			{!hasError && films.map((film) => <FilmsDetails film={film} key={film.episode_id} />)}
+			{!hasError && films.map((film, i) => <FilmsDetails film={film} key={film.episode_id} id={i + 1} />)}
 		</section>
 	);
 }

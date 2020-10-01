@@ -11,7 +11,7 @@ function Search({ getQuery }) {
 					type="text"
 					className="form-control"
 					onChange={(e) => onChange(e.target.value)}
-					placeholder="Search charecters"
+					placeholder="Search movies"
 					autoFocus
 				/>
 			</form>
