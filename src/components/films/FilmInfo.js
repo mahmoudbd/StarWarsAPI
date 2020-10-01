@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import Spinner from '../../ui/Spinner';
 import { useParams, Link } from 'react-router-dom';
 import Moment from 'moment';
-
+import { getData } from '../../helpers/getData';
 function FilmInfo() {
 	// let match = useRouteMatch();
 	// const id = match.params.id;
@@ -14,19 +14,16 @@ function FilmInfo() {
 
 	useEffect(
 		() => {
-			const getFilms = async () => {
-				try {
-					const getData = await fetch(`https://swapi.dev/api/films/${id}`);
-					const data = await getData.json();
-					setFilms(data);
+			getData(`https://swapi.dev/api/films/${id}`)
+				.then((res) => {
+					setFilms(res);
 					setIsLoading(false);
-				} catch (err) {
-					setIsLoading(false);
+				})
+				.catch((err) => {
 					setHasError(true);
+					setIsLoading(false);
 					console.log(err);
-				}
-			};
-			getFilms();
+				});
 		},
 		[ id ]
 	);
@@ -61,9 +58,9 @@ function FilmInfo() {
 						<li>
 							<strong> Producer: {films.producer}</strong>
 						</li>
-						{/* <li>
+						<li>
 							<strong> URL: {films.url}</strong>
-						</li> */}
+						</li>
 					</ul>
 				</div>
 				<div>

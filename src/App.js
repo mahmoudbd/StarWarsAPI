@@ -5,6 +5,7 @@ import FilmsList from './components/films/FilmsList';
 import Header from './ui/Header';
 import Search from './ui/Search';
 import FilmInfo from './components/films/FilmInfo';
+import { getData } from './helpers/getData';
 import './App.css';
 
 function App() {
@@ -14,20 +15,16 @@ function App() {
 	const [ hasError, setHasError ] = useState(false);
 	useEffect(
 		() => {
-			const getFilms = async () => {
-				try {
-					const getData = await fetch(`https://swapi.dev/api/films/?search=${query}`);
-
-					const data = await getData.json();
-					setFilms(data.results);
+			getData(`https://swapi.dev/api/films/?search=${query}`)
+				.then((res) => {
+					setFilms(res.results);
 					setIsLoading(false);
-				} catch (err) {
-					setIsLoading(false);
+				})
+				.catch((err) => {
 					setHasError(true);
+					setIsLoading(false);
 					console.log(err);
-				}
-			};
-			getFilms();
+				});
 		},
 		[ query ]
 	);
