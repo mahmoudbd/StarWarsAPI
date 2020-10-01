@@ -38,8 +38,7 @@ function App() {
 					<Switch>
 						<Route path="/" exact>
 							<Search getQuery={(q) => setQuery(q)} />
-							{films.length === 0 &&
-							!isLoading && <h1 className="card center">No Character found ...</h1>}
+							{films.length === 0 && !isLoading && <h1 className="card center">No Movies found ...</h1>}
 							{hasError && <h1 className="error">Something Went Wrong...</h1>}
 							<FilmsList isLoading={isLoading} films={films} hasError={hasError} />
 						</Route>
